@@ -1,1 +1,0 @@
-# Language detection with AWS Comprehend
