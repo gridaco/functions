@@ -1,9 +1,9 @@
-import parserJsFlow from "prettier/parser-flow";
+import parserHtml from "prettier/parser-html";
 import prettier from "prettier/standalone";
 
 export function format(source: string) {
   return prettier.format(source, {
-    parser: "javascript",
-    plugins: [parserJsFlow],
+    parser: "html",
+    plugins: [parserHtml],
   });
 }

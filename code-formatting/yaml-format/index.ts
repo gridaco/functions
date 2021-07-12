@@ -1,9 +1,9 @@
-import parserJsFlow from "prettier/parser-flow";
+import parserYaml from "prettier/parser-yaml";
 import prettier from "prettier/standalone";
 
 export function format(source: string) {
   return prettier.format(source, {
-    parser: "javascript",
-    plugins: [parserJsFlow],
+    parser: "yaml",
+    plugins: [parserYaml],
   });
 }
