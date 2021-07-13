@@ -5,7 +5,7 @@ plugins:
   - serverless-webpack
   - serverless-plugin-warmup
   - serverless-offline
-  # - serverless-domain-manager
+  - serverless-domain-manager
 
 custom:
   webpack:
@@ -16,11 +16,12 @@ custom:
   warmup:
     - production
     - staging
-  # customDomain:
-  #   domainName: code-format.functions.grida.cc
-  #   basePath: ""
-  #   stage: production
-  #   createRoute53Record: true
+  customDomain:
+    # domainName: code-format.functions.grida.cc
+    domainName: code-format.functions.bridged.cc
+    basePath: ""
+    stage: production
+    createRoute53Record: true
 
 provider:
   name: aws
