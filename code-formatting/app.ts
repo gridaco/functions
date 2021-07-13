@@ -70,8 +70,10 @@ app.post("/format", (req, res) => {
 });
 
 app.get("/", (req, res, next) => {
+  console.log("home route hit");
   return res.status(200).json({
-    message: "Hello from path!",
+    message:
+      "Code formatter service is running. request with POST on path '/format' - learn more about at https://github.com/gridaco/functions/tree/main/code-formatting",
   });
 });
 
