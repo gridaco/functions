@@ -1,5 +1,4 @@
 import express from "express";
-// import bodyParser from "body-parser";
 
 //
 import { format as format_yaml } from "./yaml-format";
@@ -13,8 +12,8 @@ app.use(express.json());
 
 app.post("/format", (req, res) => {
   //
-  const code = req.body?.["code"] || req.query?.["code"];
-  const lang: string = req.body?.["lang"] || req.query?.["lang"];
+  const code = req.body["code"] || req.query["code"];
+  const lang: string = req.body["lang"] || req.query["lang"];
   //
 
   if (!code || !lang) {
@@ -53,6 +52,10 @@ app.post("/format", (req, res) => {
       formatted = format_typescript(code);
       break;
 
+    case "html":
+    case "HTML":
+      formatted = format_html(code);
+      break;
     default:
       return res.status(400).json({
         error: "can not recognize language",
