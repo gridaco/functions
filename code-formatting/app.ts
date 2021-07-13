@@ -63,15 +63,16 @@ app.post("/format", (req, res) => {
         lang: lang,
       });
   }
-  return res.status(200).json({
+  return res.json({
     lang: lang,
     code: formatted,
   });
 });
 
 app.get("/", (req, res, next) => {
-  return res.status(200).json({
-    message: "Hello from path!",
+  return res.json({
+    message:
+      "Code formatter service is running. request with POST on path '/format' - learn more about at https://github.com/gridaco/functions/tree/main/code-formatting",
   });
 });
 
