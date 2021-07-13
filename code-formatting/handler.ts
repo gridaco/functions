@@ -1,23 +1,23 @@
-import serverless from "serverless-http";
-import express from "express";
-const app = express();
+import * as serverlessExpress from "aws-serverless-express";
+import { APIGatewayProxyHandler } from "aws-lambda";
 
-app.all("/", (req, res, next) => {
-  return res.status(200).json({
-    message: "Hello from root!",
-  });
-});
+import app from "./app";
 
-app.get("/hello", (req, res, next) => {
-  return res.status(200).json({
-    message: "Hello from path!",
-  });
-});
+const binaryMimeTypes = [
+  "text/css",
+  "text/html",
+  "text/javascript",
+  "text/plain",
+  "text/text",
+  "text/xml",
+  "application/javascript",
+  "application/json",
+  "application/xml",
+  // https://github.com/vendia/serverless-express/blob/master/examples/basic-starter/lambda.js
+];
 
-app.use((req, res, next) => {
-  return res.status(404).json({
-    error: "Not Found",
-  });
-});
+const server = serverlessExpress.createServer(app, null, binaryMimeTypes);
 
-module.exports.handler = serverless(app);
+export const handler: APIGatewayProxyHandler = (event, context) => {
+  serverlessExpress.proxy(server, event, context);
+};

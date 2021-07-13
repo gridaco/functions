@@ -1,8 +1,32 @@
 service: code-formatting
+useDotenv: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-plugin-optimize
+  - serverless-plugin-warmup
+  - serverless-offline
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: cors.bridged.cc
+    basePath: ""
+    stage: production
+    createRoute53Record: true
+  serverless-offline:
+    httpPort: 10010
+  warmup:
+    - production
+    - staging
 
 provider:
   name: aws
   runtime: nodejs12.x
+  memorySize: 128
+  region: us-west-1
+  apiGateway:
+    shouldStartNameWithService: true
   lambdaHashingVersion: "20201221"
 
 functions:
