@@ -2,7 +2,7 @@
     "name": "@fogs/code-formatting",
     "version": "0.0.0",
     "scripts": {
-        "clean": "rimraf .build",
+        "clean": "rimraf .build .webpack",
         "deploy:prod": "yarn clean && sls deploy --stage=production",
         "deploy": "yarn clean && sls deploy",
         "test": "jest"
@@ -16,8 +16,6 @@
         "prettier": "^2.3.2"
     },
     "devDependencies": {
-        "-": "^0.0.1",
-        "@hewmen/serverless-plugin-typescript": "^1.1.17",
         "@types/express": "^4.17.12",
         "@types/jest": "^26.0.24",
         "axios": "^0.21.1",
@@ -25,7 +23,6 @@
         "serverless-domain-manager": "^5.1.0",
         "serverless-offline": "^7.0.0",
         "serverless-plugin-optimize": "^4.2.1-rc.1",
-        "serverless-plugin-typescript": "^1.1.9",
         "serverless-plugin-warmup": "^5.3.1",
         "serverless-webpack": "^5.5.1",
         "ts-jest": "^27.0.3",

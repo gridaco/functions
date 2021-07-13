@@ -2,28 +2,25 @@ service: functions-code-formatting
 useDotenv: true
 
 plugins:
-  # - serverless-plugin-typescript
-  # - "@hewmen/serverless-plugin-typescript"
-  # - serverless-plugin-optimize
   - serverless-webpack
   - serverless-plugin-warmup
   - serverless-offline
-  - serverless-domain-manager
+  # - serverless-domain-manager
 
 custom:
   webpack:
     webpackConfig: webpack.config.js
     packager: "yarn"
-  customDomain:
-    domainName: code-format.functions.grida.cc
-    basePath: ""
-    stage: production
-    createRoute53Record: true
   serverless-offline:
     httpPort: 10010
   warmup:
     - production
     - staging
+  # customDomain:
+  #   domainName: code-format.functions.grida.cc
+  #   basePath: ""
+  #   stage: production
+  #   createRoute53Record: true
 
 provider:
   name: aws
