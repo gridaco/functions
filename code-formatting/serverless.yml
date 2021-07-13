@@ -1,4 +1,4 @@
-service: code-formatting
+service: functions-code-formatting
 useDotenv: true
 
 plugins:
@@ -10,7 +10,7 @@ plugins:
 
 custom:
   customDomain:
-    domainName: cors.bridged.cc
+    domainName: code-format.functions.grida.cc
     basePath: ""
     stage: production
     createRoute53Record: true
