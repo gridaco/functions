@@ -35,7 +35,7 @@ functions:
     events:
       - http:
           path: /
-          method: ANY
+          method: GET
       - http:
-          path: /{proxy+}
-          method: ANY
+          path: /format
+          method: POST

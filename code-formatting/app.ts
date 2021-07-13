@@ -1,18 +1,30 @@
+import express from "express";
+// import bodyParser from "body-parser";
+
+//
 import { format as format_yaml } from "./yaml-format";
 import { format as format_typescript } from "./typescript-format";
 import { format as format_javascript } from "./javascript-format";
 import { format as format_dart } from "./dart-format";
 import { format as format_html } from "./html-format";
-
-import express from "express";
 const app = express();
 
-app.post("/format", (req, res, next) => {
+app.use(express.json());
+
+app.post("/format", (req, res) => {
   //
-  const { code } = req.body;
-  const { lang } = req.query;
+  const code = req.body?.["code"] || req.query?.["code"];
+  const lang: string = req.body?.["lang"] || req.query?.["lang"];
   //
-  console.log("lang:code", lang, code);
+
+  if (!code || !lang) {
+    return res.status(400).json({
+      error: "both code and language option is required",
+      code: code || "none",
+      lang: lang || "none",
+    });
+  }
+
   let formatted: string;
   switch (lang) {
     case "DART":
@@ -45,6 +57,7 @@ app.post("/format", (req, res, next) => {
       return res.status(400).json({
         error: "can not recognize language",
         code: code,
+        lang: lang,
       });
   }
   return res.status(200).json({
