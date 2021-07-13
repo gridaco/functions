@@ -10,6 +10,11 @@
 
 ## Api - calling via REST Api
 
+**Current function url**: `https://q18lvkpic8.execute-api.us-west-1.amazonaws.com/production/`
+
+- GET /
+- POST /format
+
 ```sh
 # option 1 - body only
 POST /format
