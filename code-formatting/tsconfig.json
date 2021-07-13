@@ -10,5 +10,6 @@
     "moduleResolution": "node",
     "lib": ["es2015"],
     "rootDir": "./"
-  }
+  },
+  "exclude": ["__test__", ".build"]
 }

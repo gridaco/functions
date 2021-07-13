@@ -15,6 +15,7 @@
     "devDependencies": {
         "@types/express": "^4.17.12",
         "@types/jest": "^26.0.24",
+        "axios": "^0.21.1",
         "jest": "^27.0.6",
         "serverless-domain-manager": "^5.1.0",
         "serverless-offline": "^7.0.0",
