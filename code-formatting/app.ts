@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 //
 import { format as format_yaml } from "./yaml-format";
@@ -9,6 +10,11 @@ import { format as format_html } from "./html-format";
 const app = express();
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.post("/format", (req, res) => {
   //

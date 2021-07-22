@@ -39,6 +39,10 @@ functions:
       - http:
           path: /
           method: GET
+          cors:
+            origin: "*"
       - http:
           path: /format
           method: POST
+          cors:
+            origin: "*"
